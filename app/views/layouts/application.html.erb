@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meshittero2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <% if user_signed_in? %>
+      <li><%= link_to"ログアウト", destroy_user_session_path,method: :delete %></li>
+      <li>投稿フォーム</li>
+      <li>マイページ</li>
+      <% else %>
+      <li><%= link_to"新規登録",  new_user_registration_path %></li>
+      <li><%= link_to"ログイン", new_user_session_path %></li>
+      <% end %>
+    </header>
+
+    <main>
+    <%= yield %>
+    </main>
+
+  <footer>
+    <p>善良な市民同士で無差別に食欲を煽るSNS</p>
+  </footer>
+  </body>
+</html>
